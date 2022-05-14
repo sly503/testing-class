@@ -2,7 +2,13 @@ package com.example;
 
 public class Calculator {
     
+    
+    protected static CalculatorHelper helper;
+
     public int sum(int a, int b) {
+        if(!helper.checkIfArgsArePositive(a, b)) {
+            throw new RuntimeException("Arguments must be positive");
+        }
         return a + b;
     }
 
@@ -38,19 +44,10 @@ public class Calculator {
         return result;
     }
 
-    public int fib(int a) {
-        int result = 0;
-        int prev = 0;
-        int next = 1;
-        for (int i = 0; i < a; i++) {
-            result = prev + next;
-            prev = next;
-            next = result;
-        }
-        return result;
+    public void setHelper(CalculatorHelper calculatorHelper) {
     }
 
 
-    
+
 
 }
