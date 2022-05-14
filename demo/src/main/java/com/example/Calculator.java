@@ -3,7 +3,14 @@ package com.example;
 public class Calculator {
     
     
-    protected static CalculatorHelper helper;
+    CalculatorHelper helper;
+
+    public Calculator(CalculatorHelper helper) {
+        this.helper = helper;
+    }
+
+    public Calculator() {
+    }
 
     public int sum(int a, int b) {
         if(!helper.checkIfArgsArePositive(a, b)) {
@@ -13,6 +20,9 @@ public class Calculator {
     }
 
     public int sub(int a, int b) {
+        if(!helper.checkIfArgsArePositive(a, b)) {
+            throw new RuntimeException("Arguments must be positive");
+        }
         return a - b;
     }
 
@@ -44,8 +54,6 @@ public class Calculator {
         return result;
     }
 
-    public void setHelper(CalculatorHelper calculatorHelper) {
-    }
 
 
 
